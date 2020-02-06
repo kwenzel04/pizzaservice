@@ -17,6 +17,7 @@ public function printPizza(){
     $path .= $this->imageFile;
     echo
 <<<HTML
+                <span class="pContainer" onclick="addToWarenkorb('$this->pizzaName', '$this->pizzaPrice')">
                     <span> 
                         <img class="pizzaImage" src="$path" widht="300px" height="300px" alt="$this->pizzaName">
                     </span>
@@ -24,6 +25,7 @@ public function printPizza(){
                         <a class="paragraphCenter">$this->pizzaName</a>
                         <a class="paragraphCenter">$this->pizzaPrice €</a> 
                     </span>
+                </span>
 HTML;
 }
 }

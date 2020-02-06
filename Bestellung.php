@@ -1,9 +1,5 @@
 <?php	// UTF-8 marker äöüÄÖÜß€
-/**
- * @package  Pizzaservice
- * @author   Nils Reichstein
- * @author   Konstantin Wenzel
- */
+
 
 require_once './Page.php';
 require_once './Pizza.php';
@@ -42,7 +38,7 @@ class Bestellung extends Page
     protected function generateView() 
     {
         $this->getViewData();
-        $this->generatePageHeader('La Sale - Bestellung');
+        $this->generatePageHeader('Bestellung');
         echo
 <<<HTML
     <article>
@@ -63,14 +59,14 @@ HTML;
             <h1 class="title">Warenkorb</h1>
             <!-- <ul id="warenkorbListe" class="warenkorbStyle">
             </ul> -->
-            <form id="warenkorb" action="kunde.php" method="POST">
+            <form id="warenkorb" action="Kunde.php" method="POST" onsubmit="return submitCondition()">
                 <select id="warenkorbSelect" multiple name="pizzas[]" tabindex="3">
                 </select><br>
                 <input class="inputStyle" id="total" type="text" name="price" value="0.00" disabled/><br>
                 <input class="inputStyle" type="text" id = address name="address" placeholder="Name, Adresse" tabindex="4" required/><br>
-                <button class="blackButton" type="submit" tabindex="5" >Bestellen</button>
-                <button class="blackButton" type="button" tabindex="6" >Auswahl Löschen</button>
-                <button class="blackButton" type="button" tabindex="7" >Alle Löschen</button>                  
+                <button class="blackButton" type="submit" tabindex="5" onclick="selectAll()">Bestellen</button>
+                <button class="blackButton" type="button" tabindex="6" onclick="deleteSelected()">Auswahl Löschen</button>
+                <button class="blackButton" type="button" tabindex="7" onclick="deleteAll()">Alle Löschen</button>                  
             </form>
         </section>
     </article>    

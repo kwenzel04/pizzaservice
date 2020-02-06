@@ -36,11 +36,12 @@ abstract class Page
     <!DOCTYPE html>
     <html lang="de">  
     <head>
+        <script src="scripts/basket.js"></script>
         <meta charset="UTF-8" />
         <title>$headline</title>
     </head>
-    <header></header>
     <body class="body">
+        <header>Pizza Bella Pizzeria</header>
         <nav class="navbar">
             <ul id="nav">
 HTML;

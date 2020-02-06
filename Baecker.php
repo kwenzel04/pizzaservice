@@ -1,126 +1,162 @@
-<?php	// UTF-8 marker äöüÄÖÜß€
-/**
- * Class PageTemplate for the exercises of the EWA lecture
- * Demonstrates use of PHP including class and OO.
- * Implements Zend coding standards.
- * Generate documentation with Doxygen or phpdoc
- * 
- * PHP Version 5
- *
- * @category File
- * @package  Pizzaservice
- * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de> 
- * @author   Ralf Hahn, <ralf.hahn@h-da.de> 
- * @license  http://www.h-da.de  none 
- * @Release  1.2 
- * @link     http://www.fbi.h-da.de 
- */
-
-// to do: change name 'PageTemplate' throughout this file
+<?php
 require_once './Page.php';
 
-/**
- * This is a template for top level classes, which represent 
- * a complete web page and which are called directly by the user.
- * Usually there will only be a single instance of such a class. 
- * The name of the template is supposed
- * to be replaced by the name of the specific HTML page e.g. baker.
- * The order of methods might correspond to the order of thinking 
- * during implementation.
- 
- * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de> 
- * @author   Ralf Hahn, <ralf.hahn@h-da.de> 
- */
-class PageTemplate extends Page
+class Kunde extends Page
 {
-    // to do: declare reference variables for members 
-    // representing substructures/blocks
-    
-    /**
-     * Instantiates members (to be defined above).   
-     * Calls the constructor of the parent i.e. page class.
-     * So the database connection is established.
-     *
-     * @return none
-     */
+    private $orderedPizzas = array();
+    private $address = "";
+    private $lastOrderID;
+    private $customerMap = array();
+
     protected function __construct() 
     {
         parent::__construct();
-        // to do: instantiate members representing substructures/blocks
     }
     
-    /**
-     * Cleans up what ever is needed.   
-     * Calls the destructor of the parent i.e. page class.
-     * So the database connection is closed.
-     *
-     * @return none
-     */
     protected function __destruct() 
     {
         parent::__destruct();
     }
 
-    /**
-     * Fetch all data that is necessary for later output.
-     * Data is stored in an easily accessible way e.g. as associative array.
-     *
-     * @return none
-     */
     protected function getViewData()
     {
-        // to do: fetch data for this view from the database
-    }
+        if(isset($_SESSION['orderID'])){
+            $sqlSelect = "SELECT PizzaName, Status, fBestellungID, PizzaID FROM angebot JOIN bestelltepizza ON PizzaNummer = fPizzaNummer WHERE fBestellungID = {$_SESSION['orderID']} ORDER BY fBestellungID";
+            $db_output = $this->_database->query($sqlSelect);
+            if($db_output->num_rows > 0)
+            {
+                while($row = $db_output->fetch_assoc())
+                {
+                    $this->customerMap[] = ['name' => htmlspecialchars($row['PizzaName']), 'status' => htmlspecialchars($row['Status']), 'bID' => htmlspecialchars($row['fBestellungID']), 'pID' => htmlspecialchars($row['PizzaID'])];
+                }
+            }
+        }
+    }  
+
+
     
-    /**
-     * First the necessary data is fetched and then the HTML is 
-     * assembled for output. i.e. the header is generated, the content
-     * of the page ("view") is inserted and -if avaialable- the content of 
-     * all views contained is generated.
-     * Finally the footer is added.
-     *
-     * @return none
-     */
     protected function generateView() 
     {
         $this->getViewData();
-        $this->generatePageHeader('to do: change headline');
-        // to do: call generateView() for all members
-        // to do: output view of this page
+        $this->generatePageHeader('Baecker');
+        echo
+<<<HTML
+    <script src="scripts/StatusUpdate.js"></script>
+    <article>
+        <section class="sectionStyle">
+            <h2 class="title">Lieferstatus</h2>
+            <div class="status-items-header">
+                <span>Bestellung:</span>
+                <span>Bestellt:</span>
+                <span>Im Ofen:</span>
+                <span>Fertig:</span>
+                <span>Unterwegs:</span>
+                <span>Geliefert</span>
+            </div>
+            <div id="customerOrder">
+HTML;
+        foreach($this->customerMap as $cM)
+        {
+            $ordered = $cM['status'] == 'bestellt' ? 'checked' : '';
+            $inOven = $cM['status'] == 'im ofen' ? 'checked' : '';
+            $finished = $cM['status'] == 'fertig' ? 'checked' : '';
+            $delivering = $cM['status'] == 'unterwegs' ? 'checked' : '';
+            $delivered = $cM['status'] == 'geliefert' ? 'checked' : '';
+            $pizzaID = $cM['pID'];
+            echo
+<<<HTML
+                <div class="defaultContainer status-items-item">
+                    <span>
+                        ({$cM['bID']}) {$cM['name']}
+                    </span>
+                    <span>
+                        <input type="radio" name=$pizzaID value="bestellt" $ordered disabled>
+                    </span>
+                    <span>
+                        <input type="radio" name=$pizzaID value="im ofen" $inOven disabled>
+                    </span>
+                    <span>
+                        <input type="radio" name=$pizzaID value="fertig" $finished disabled>
+                    </span>
+                    <span>
+                        <input type="radio" name=$pizzaID value="unterwegs" $delivering disabled>
+                    </span>
+                    <span>
+                        <input type="radio" name=$pizzaID value="geliefert" $delivered disabled>
+                    </span>
+                </div>
+HTML;
+        }
+
+
+        echo
+<<<HTML
+            </div>
+            <div>
+                <button class="blackButton" onclick="location.href = 'Bestellung.php';">Neue Bestellung</button>
+            </div>     
+        </section>
+    </article>
+HTML;
+
         $this->generatePageFooter();
     }
+
+
+
+
+
     
-    /**
-     * Processes the data that comes via GET or POST i.e. CGI.
-     * If this page is supposed to do something with submitted
-     * data do it here. 
-     * If the page contains blocks, delegate processing of the 
-	 * respective subsets of data to them.
-     *
-     * @return none 
-     */
     protected function processReceivedData() 
     {
         parent::processReceivedData();
-        // to do: call processReceivedData() for all members
+        {
+        //falls die Seite nicht über den Button geöffnet wird, muss nichts aus _POST eingelesen werden
+        if(isset($_POST['address']) && isset($_POST['pizzas']))
+        {
+            
+            //Werte aus _POST in variablen übertragen
+            $this->orderedPizzas = $_POST ["pizzas"];
+            $this->address = $_POST["address"];
+            $this->address = $this->_database->real_escape_string($this->address);
+
+            //Bestellung mit der Adresse $adress in der DB anlegen
+            $sqlInsert = "INSERT INTO bestellung(Adresse) VALUES ('$this->address')";
+            $this->_database->query($sqlInsert); 
+
+            //ID der zuletzt hinzugefügten Bestellung
+            $this->lastOrderID = $this->_database->insert_id;
+
+            //OrderID in Session schreiben
+            $_SESSION['orderID'] = $this->lastOrderID;
+
+            $this->lastOrderID = $this->_database->real_escape_string($this->lastOrderID);
+            
+            //Jede bestellte Pizza wird in die tabelle BestelltePizza inserted
+            foreach($this->orderedPizzas as $pizza){
+                $sqlSelect = "SELECT PizzaNummer FROM Angebot WHERE PizzaName = '$pizza'";
+                $db_output = $this->_database->query($sqlSelect)->fetch_assoc();
+                $pizzaID = $db_output['PizzaNummer'];
+                $pizzaID = $this->_database->real_escape_string($pizzaID);
+                $sqlInsert = "INSERT INTO bestelltepizza(fBestellungID, fPizzaNummer, Status) VALUES ('$this->lastOrderID', '$pizzaID', 'bestellt')";
+                $this->_database->query($sqlInsert); 
+            }
+        }
+        else
+        {
+            return;
+        }
+                
+        //falls Probleme beim schreiben in DB -> gibt Fehler aus
+        //echo $this->_database->errno.'-'.$this->_database->error;
+        }
     }
 
-    /**
-     * This main-function has the only purpose to create an instance 
-     * of the class and to get all the things going.
-     * I.e. the operations of the class are called to produce
-     * the output of the HTML-file.
-     * The name "main" is no keyword for php. It is just used to
-     * indicate that function as the central starting point.
-     * To make it simpler this is a static function. That is you can simply
-     * call it without first creating an instance of the class.
-     *
-     * @return none 
-     */    
     public static function main() 
     {
+        session_start();
         try {
-            $page = new PageTemplate();
+            $page = new Kunde();
             $page->processReceivedData();
             $page->generateView();
         }
@@ -131,13 +167,6 @@ class PageTemplate extends Page
     }
 }
 
-// This call is starting the creation of the page. 
-// That is input is processed and output is created.
-PageTemplate::main();
 
-// Zend standard does not like closing php-tag!
-// PHP doesn't require the closing tag (it is assumed when the file ends). 
-// Not specifying the closing ? >  helps to prevent accidents 
-// like additional whitespace which will cause session 
-// initialization to fail ("headers already sent"). 
-//? >
+Kunde::main();
+?>

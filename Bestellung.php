@@ -43,7 +43,7 @@ class Bestellung extends Page
 <<<HTML
     <article>
     <section class="sectionStyle">
-        <h1 class="title">Speisekarte</h1>
+        <h4 class="title">Speisekarte</h4>
         
             <div class="pizzaWrapper">
 HTML;
@@ -56,7 +56,7 @@ HTML;
             </div>
         </section>
         <section class="sectionStyle">
-            <h1 class="title">Warenkorb</h1>
+            <h4 class="title">Warenkorb</h4>
             <!-- <ul id="warenkorbListe" class="warenkorbStyle">
             </ul> -->
             <form id="warenkorb" action="Kunde.php" method="POST" onsubmit="return submitCondition()">

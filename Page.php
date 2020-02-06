@@ -37,6 +37,7 @@ abstract class Page
     <html lang="de">  
     <head>
         <script src="scripts/basket.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <meta charset="UTF-8" />
         <title>$headline</title>
     </head>

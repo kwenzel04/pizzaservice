@@ -44,7 +44,7 @@ abstract class Page
         <title>$headline</title>
     </head>
     <body class="body">
-        <header>Pizza Bella Pizzeria</header>
+        <header>Pizzeria Stronzo</header>
         <nav class="navbar">
             <ul id="nav">
 HTML;

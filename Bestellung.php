@@ -68,6 +68,14 @@ HTML;
                 <button class="blackButton" type="button" tabindex="6" onclick="deleteSelected()">Auswahl Löschen</button>
                 <button class="blackButton" type="button" tabindex="7" onclick="deleteAll()">Alle Löschen</button>                  
             </form>
+            <form>
+                <!--<table id="warenTable">
+                    <tr>
+                        <th>Pizza</th>
+                        <th>Preis</th>
+                    </tr>
+                </table>-->
+            </form>
         </section>
     </article>    
 HTML;

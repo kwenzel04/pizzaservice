@@ -23,6 +23,32 @@ function addToWarenkorb(pizza, price){
     var totalPriceRound = totalPriceFloat.toFixed(2);
 
     document.getElementById('total').value = totalPriceRound;
+    document.getElementById('total').value +="€";
+
+
+
+
+    
+    /*var tableW = document.getElementById("warenTable");
+    var eintrag = document.createElement('tr');
+    var pizzaT = document.createElement('td');
+    var preisT = document.createElement('td');
+
+
+
+
+    pizzaT = document.createTextNode(pizza);
+    preisT = document.createTextNode(parseFloat(price));
+
+
+
+    tableW.appendChild(eintrag);
+    eintrag.appendChild(pizzaT);
+    eintrag.appendChild(preisT);*/
+
+
+  
+    
 }
 
 
@@ -41,7 +67,7 @@ function deleteSelected(){
     
         var totalPriceRound = totalPriceFloat.toFixed(2);
         document.getElementById('total').value = totalPriceRound;
-
+        document.getElementById('total').value +="€";
         pizzaSelect.remove(pizzaSelect.selectedIndex);
     }   
 }
@@ -54,7 +80,7 @@ function deleteAll(){
     for (var i = 0; i < length; i++) {
         select.options.remove(0);
     }
-    document.getElementById('total').value = "0.00";
+    document.getElementById('total').value = "0.00€";
 }
 
 
@@ -77,3 +103,5 @@ function selectAll(){
         select.options[i].selected = true;
     }
 }
+
+window.onload = () => {document.getElementById('total').value +="€";}

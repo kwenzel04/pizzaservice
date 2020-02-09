@@ -55,10 +55,6 @@ class KundenStatus extends Page
     }
     
 
-
-
-
-
     public static function main() 
     {
         session_start();

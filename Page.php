@@ -1,4 +1,6 @@
 <?php	
+
+require_once './Page.php';
  
 abstract class Page
 {
@@ -56,6 +58,7 @@ if($currentPage== "Bestellung.php"){
                 <li><a href="Kunde.php">Kunde</a></li>
                 <li><a href="Baecker.php">Bäcker</a></li>
                 <li><a href="Fahrer.php">Fahrer</a></li>
+                <li><a href="Abrechnung.php">Abrechnung</a></li>
             </ul>
         </nav>
 HTML;
@@ -69,6 +72,7 @@ if($currentPage== "Kunde.php"){
                 <li><a class="active" href="Kunde.php">Kunde</a></li>
                 <li><a href="Baecker.php">Bäcker</a></li>
                 <li><a href="Fahrer.php">Fahrer</a></li>
+                <li><a href="Abrechnung.php">Abrechnung</a></li>
             </ul>
         </nav>
 HTML;
@@ -82,6 +86,7 @@ if($currentPage== "Baecker.php"){
                 <li><a href="Kunde.php"> Kunde</a></li>
                 <li><a class="active" href="Baecker.php">Bäcker</a></li>
                 <li><a href="Fahrer.php">Fahrer</a></li>
+                <li><a href="Abrechnung.php">Abrechnung</a></li>
             </ul>
         </nav>
 HTML;
@@ -94,12 +99,28 @@ if($currentPage== "Fahrer.php"){
                 <li><a href="Kunde.php"> Kunde</a></li>
                 <li><a href="Baecker.php">Bäcker</a></li>
                 <li><a class="active" href="Fahrer.php">Fahrer</a></li>
+                <li><a href="Abrechnung.php">Abrechnung</a></li>
             </ul>
         </nav>
 HTML;
 
 
     }
+
+if($currentPage== "Abrechnung.php"){
+    echo
+<<<HTML
+                <li><a href="Bestellung.php">Bestellung</a></li>
+                <li><a href="Kunde.php"> Kunde</a></li>
+                <li><a href="Baecker.php">Bäcker</a></li>
+                <li><a href="Fahrer.php">Fahrer</a></li>
+                <li><a class="active" href="Abrechnung.php">Abrechnung</a></li>
+            </ul>
+        </nav>
+HTML;
+
+
+    }    
 
 }
 

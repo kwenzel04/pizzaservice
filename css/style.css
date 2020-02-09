@@ -1,19 +1,274 @@
 
 body {
-    background-color: grey;
+  
     background-image: url("wood.jpg");
+    background:-webkit-linear-gradient(#111111,black,#111111);
     background-repeat: repeat;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
+    color:white;
+
   }
 
 header {
+    word-spacing: 50px;
+    letter-spacing: -10px;
     font-family: Verdana;
     color: white;
     font-size: 72px;
-    text-align: left;
+    text-align: center;
 }
+
+
+
+
+
+@media(min-width:900px)
+{
+    #nav{
+    /*display: block;
+    list-style-type: none;
+    margin:0;
+    margin-top: 20px;
+    padding:0;*/
+    display:flex;
+    width: 100vw;
+    list-style-type: none;
+    justify-content:center;
+    border-color: white;
+    border: 0;
+    margin:0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 0vw;
+    margin-right: 0vw;
+    padding:0;
+  }
+
+
+
+  li{
+    width: 20vw;
+    box-sizing: content-box;
+    color: white;
+    background-color:#111111;
+    margin:0;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding:10px;
+    border: 0;
+    border-radius:1px;
+    text-align: center;
+  }
+
+  li a{
+    box-sizing: border-box;
+    height: 100%;
+    border:0;
+    padding:0px;
+    margin:0;
+    text-decoration: none;
+    color:white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  li:hover{
+    transition: ease-in 80ms;
+    transform: scale(1.1) translate(0, -5px);
+    }
+    
+    @keyframes btn{
+      0%{transform: scale(1);}
+      50%{transform: scale(1.2);}
+      100%{transform: scale(1);}
+    }
+
+}
+
+
+
+
+@media(max-width:899px)
+{
+    #nav{
+    /*display: block;
+    list-style-type: none;
+    margin:0;
+    margin-top: 20px;
+    padding:0;*/
+    display:flex;
+    width: 100vw;
+    list-style-type: none;
+    justify-content:center;
+    border-color: white;
+    flex-wrap: wrap;
+    border: 0;
+    margin:0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 0vw;
+    margin-right: 0vw;
+    padding:0;
+  }
+
+
+
+  li{
+    width: 80vw;
+    box-sizing: content-box;
+    color: white;
+    background-color: #111111;
+    margin:0;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding:10px;
+    border: 0;
+    border-radius:1px;
+    text-align: center;
+    
+  }
+
+  li a{
+    box-sizing: border-box;
+    height: 100%;
+    border:0;
+    padding:0;
+    margin:0;
+    text-decoration: none;
+    color:white;
+    letter-spacing: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  li:hover{
+    transition: ease-in 80ms;
+    transform: scaleY(1.1) translate(10px, 0);
+    }
+    
+    @keyframes btn{
+      0%{transform: scale(1);}
+      50%{transform: scale(1.2);}
+    }
+    
+}
+
+.active{
+ font-weight: 900;
+}
+
+
+
+
+
+
+
+
+
+.sectionStyle{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#warenkorb{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.blackButton{
+  flex:2;
+  min-width: 30%;
+}
+
+#warenkorbSelect{
+  max-width: 30%;
+  flex:3;
+  
+}
+
+#address{
+  min-width: 50%;
+  flex:2;
+}
+
+#total{
+  max-width: 20%;
+  font-size: 200%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  flex:1;
+  background-color: transparent;
+  color:white;
+  border:0;
+  text-align: left;
+  box-sizing: border-box;
+  padding-left: 2%;
+}
+
+
+
+
+
+
+
+.pizzaWrapper{
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.pContainer{
+  display: flex;
+  
+  flex-direction: column;
+  justify-content: center;
+  cursor:pointer;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.pizzaImage:hover{
+  animation-name: pizza;
+  animation-duration: 1.6s;
+  animation-iteration-count: infinite;
+  animation-delay: 0ms;
+  animation-timing-function: linear;
+}
+
+@keyframes pizza{
+
+  0%{transform: scale(1);}
+  50%{transform: scale(1.05);}
+  100%{transform: scale(1);}
+}
+
+
+
+.pizzaImage{
+  min-height:200px;
+  min-width: 200px;
+  max-height: 300px;
+  min-width: 300px;
+}
+
+
+.title{
+  clear: both;
+  text-align: center;
+  font-size: 3vw;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 40px;
+  letter-spacing: 1em;
+}
+
+
+
+
+
+
+/*
 
 h4 {
     font-family: Verdana;
@@ -44,7 +299,6 @@ ul {
     text-decoration: none;
   }
   
-  /* Change the link color to #111 (black) on hover */
   li a:hover {
     background-color: #111;
   }
@@ -54,7 +308,6 @@ ul {
   }
 
   .paragraphCenter{
-     display: block;
       color: white;
       font-size: 25px;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -70,3 +323,13 @@ ul {
       display:block;
       align-content: center;
   }
+
+
+
+
+
+table{
+  color: white;
+}
+*/
+

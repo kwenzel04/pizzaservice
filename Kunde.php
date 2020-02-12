@@ -45,7 +45,7 @@ class Kunde extends Page
     <script src="scripts/StatusUpdate.js"></script>
     <article>
         <section class="sectionStyle">
-            <h2 class="title">Lieferstatus</h2>
+            <h4 class="title">Lieferstatus</h4>
             <div class="status-items-header">
                 <span>Bestellung:</span>
                 <span>Bestellt:</span>

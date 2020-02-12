@@ -19,7 +19,7 @@ public function printPizza(){
 <<<HTML
                 <span class="pContainer" onclick="addToWarenkorb('$this->pizzaName', '$this->pizzaPrice')">
                     <span> 
-                        <img class="pizzaImage" src="$path" widht="300px" height="300px" alt="$this->pizzaName">
+                        <img class="pizzaImage" src="$path" alt="$this->pizzaName">
                     </span>
                     <span>
                         <a class="paragraphCenter">$this->pizzaName</a>

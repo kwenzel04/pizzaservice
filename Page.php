@@ -1,4 +1,6 @@
 <?php	
+
+require_once './Page.php';
  
 abstract class Page
 {
@@ -37,11 +39,12 @@ abstract class Page
     <html lang="de">  
     <head>
         <script src="scripts/basket.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <meta charset="UTF-8" />
         <title>$headline</title>
     </head>
     <body class="body">
-        <header>Pizza Bella Pizzeria</header>
+        <header>Pizzeria Stronzo</header>
         <nav class="navbar">
             <ul id="nav">
 HTML;
@@ -55,6 +58,7 @@ if($currentPage== "Bestellung.php"){
                 <li><a href="Kunde.php">Kunde</a></li>
                 <li><a href="Baecker.php">Bäcker</a></li>
                 <li><a href="Fahrer.php">Fahrer</a></li>
+                <li><a href="Abrechnung.php">Abrechnung</a></li>
             </ul>
         </nav>
 HTML;
@@ -68,6 +72,7 @@ if($currentPage== "Kunde.php"){
                 <li><a class="active" href="Kunde.php">Kunde</a></li>
                 <li><a href="Baecker.php">Bäcker</a></li>
                 <li><a href="Fahrer.php">Fahrer</a></li>
+                <li><a href="Abrechnung.php">Abrechnung</a></li>
             </ul>
         </nav>
 HTML;
@@ -81,6 +86,7 @@ if($currentPage== "Baecker.php"){
                 <li><a href="Kunde.php"> Kunde</a></li>
                 <li><a class="active" href="Baecker.php">Bäcker</a></li>
                 <li><a href="Fahrer.php">Fahrer</a></li>
+                <li><a href="Abrechnung.php">Abrechnung</a></li>
             </ul>
         </nav>
 HTML;
@@ -93,12 +99,28 @@ if($currentPage== "Fahrer.php"){
                 <li><a href="Kunde.php"> Kunde</a></li>
                 <li><a href="Baecker.php">Bäcker</a></li>
                 <li><a class="active" href="Fahrer.php">Fahrer</a></li>
+                <li><a href="Abrechnung.php">Abrechnung</a></li>
             </ul>
         </nav>
 HTML;
 
 
     }
+
+if($currentPage== "Abrechnung.php"){
+    echo
+<<<HTML
+                <li><a href="Bestellung.php">Bestellung</a></li>
+                <li><a href="Kunde.php"> Kunde</a></li>
+                <li><a href="Baecker.php">Bäcker</a></li>
+                <li><a href="Fahrer.php">Fahrer</a></li>
+                <li><a class="active" href="Abrechnung.php">Abrechnung</a></li>
+            </ul>
+        </nav>
+HTML;
+
+
+    }    
 
 }
 

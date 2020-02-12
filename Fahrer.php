@@ -9,6 +9,7 @@ class Fahrer extends Page
 
     protected function __construct() 
     {
+        header("Refresh: 2");
         parent::__construct();
     }
     
@@ -41,7 +42,7 @@ class Fahrer extends Page
     <script src="scripts/reload.js"></script>
     <article>
         <section class="sectionStyle">
-            <h4 class="title">Pizzaübersicht für den Fahrer</h4>
+            <h4 class="title">Pizzaübersicht</h4>
             <form id="lieferstatus" action="Fahrer.php" method="POST">
 HTML;
 

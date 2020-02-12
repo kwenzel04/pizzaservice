@@ -1,5 +1,9 @@
 <?php	// UTF-8 marker äöüÄÖÜß€
 
+
+
+
+
 require_once './Page.php';
 
 class Baecker extends Page
@@ -8,6 +12,7 @@ class Baecker extends Page
 
     protected function __construct() 
     {
+        header("Refresh: 2");
         parent::__construct();
     }
     
@@ -47,7 +52,7 @@ class Baecker extends Page
     <script src="scripts/reload.js"></script>
     <article>
         <section class="sectionStyle">
-            <h4 class="title">Pizzaübersicht für den Bäcker</h4>
+            <h4 class="title">Pizzaübersicht</h4>
             <form id="ovenstatus" action="Baecker.php" method="POST">
                 <div class="status-items-header">
                     <span>
